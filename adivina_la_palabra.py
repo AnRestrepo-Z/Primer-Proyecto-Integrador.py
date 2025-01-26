@@ -16,4 +16,18 @@ El juego finaliza cuando el jugador queda sin vidas, cuando adivina todas las le
 cuando selecciona no jugar más. Para todos los casos se debe mostrar un mensaje indicando si ganó la partida 
 o si perdió. 
 """
-print("Sobreviviendo al curso :(")
+#Usando random para que las palabras aparezcan de forma aleatoria
+import random
+
+#Definiendo función para elegir la palabra que adivinará el usuario
+def adivina_la_palabra():
+    #Se crea una lista de las palabras del juego
+    palabras = ["cocodrilo", "hipopotamo", "elefante", "mariposa", "dinosaurio", "ornitorrinco", "camaleon"]
+    palabra_oculta = random.choice(palabras)
+    progreso = ["_"],len(palabra_oculta)
+    intentos = 6
+
+    print("Adivina la palabra! Recuerda que tienes 6 intentos")
+    print(" ".join(progreso))
+
+    
