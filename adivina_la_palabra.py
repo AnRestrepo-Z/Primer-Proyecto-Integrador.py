@@ -33,10 +33,6 @@ def adivina_la_palabra():
     while intentos >0 and "_" in progreso:
         letra = input ("\n Adivina una letra").lower
 
-        if len(letra) !=1 or not letra.isalpha():
-            print("Ingresa una sola letra por portunidad")
-            continue
-        elif letra in palabra_oculta:
-            print(f"La letra {letra} está entre la palabra oculta!")
+       
 
 
