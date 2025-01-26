@@ -16,4 +16,4 @@ El juego finaliza cuando el jugador queda sin vidas, cuando adivina todas las le
 cuando selecciona no jugar más. Para todos los casos se debe mostrar un mensaje indicando si ganó la partida 
 o si perdió. 
 """
-
+print("Sobreviviendo al curso :(")
