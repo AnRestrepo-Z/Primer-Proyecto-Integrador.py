@@ -47,4 +47,10 @@ def adivina_la_palabra():
         
         print("progreso: "+" ".join(progreso))
 
+    if "_" not in progreso:
+     print("\n¡Muy bien! Adivinaste la palabra 🥳")
+    else:
+        print("\nTus oportunidades terminaron 🙁 La palabra era {palabra_oculta}")
+        
+
 
