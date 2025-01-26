@@ -31,7 +31,7 @@ def adivina_la_palabra():
     print(" ".join(progreso))
 
     while intentos >0 and "_" in progreso:
-        letra = input ("\n Adivina una letra").lower()
+        letra = input("\n Adivina una letra: ").lower()
 
         if len(letra) !=1 or not letra.isalpha():#Se usa la función isalpha para verificar que el usuario use letras y no números y/o signos
             print("Ingresa una sola letra por portunidad")
@@ -52,5 +52,13 @@ def adivina_la_palabra():
     else:
         print(f"\nTus oportunidades terminaron 🙁 La palabra era {palabra_oculta}")
 
+#Ejecutando el juego
 
+if __name__=="__main__":
+    while True:
+     adivina_la_palabra()
+     nueva_partida= input("Quieres una nueva partida? (s/n): ")
+     if nueva_partida != "s":
+        print("Espero te hayas divertido! Bye!")
+        break
 
