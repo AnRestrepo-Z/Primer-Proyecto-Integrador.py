@@ -1,57 +1,35 @@
+#Usando random para que las palabras aparezcan de forma aleatoria
 import random
 
-def elegir_palabra():
-    palabras = ['python', 'programacion', 'juego', 'desafio', 'computadora']
-    return random.choice(palabras)
+#Definiendo función para elegir la palabra que adivinará el usuario
+def adivina_la_palabra():
+    #Se crea una lista de las palabras del juego
+    palabras = ["cocodrilo", "hipopotamo", "elefante", "mariposa", "dinosaurio", "ornitorrinco", "camaleon"]
+    palabra_oculta = random.choice(palabras) 
+    progreso = ["_"],len(palabra_oculta) 
+    intentos = 6
 
-def mostrar_palabra_oculta(palabra, letras_adivinadas):
-    oculta = ''
-    for letra in palabra:
-        if letra in letras_adivinadas:
-            oculta += letra
-        else:
-            oculta += '_'
-    return oculta
+    print("Adivina la palabra! Recuerda que tienes 6 intentos")
+    print(" ".join(progreso))
 
-def jugar_adivina_la_palabra():
-    palabra = elegir_palabra()
-    letras_adivinadas = []
-    letras_incorrectas = []
-    vidas = 6
+    while intentos >0 and "_" in progreso:
+        letra = input ("\n Adivina una letra").lower
 
-    print("¡Bienvenido al juego Adivina la palabra!")
-    print(f"Tienes {vidas} vidas.")
-
-    while vidas > 0:
-        print("\nPalabra:", mostrar_palabra_oculta(palabra, letras_adivinadas))
-        print("Letras incorrectas:", ', '.join(letras_incorrectas))
-        letra = input("Ingresa una letra: ").lower()
-
-        if not letra.isalpha() or len(letra) != 1:
-            print("Por favor, ingresa una sola letra.")
+        if len(letra) !=1 or not letra.isalpha():
+            print("Ingresa una sola letra por portunidad")
             continue
-
-        if letra in letras_adivinadas or letra in letras_incorrectas:
-            print("Ya ingresaste esa letra.")
-            continue
-
-        if letra in palabra:
-            letras_adivinadas.append(letra)
-            if set(letras_adivinadas) == set(palabra):
-                print(f"¡Felicidades! Adivinaste la palabra: {palabra}")
-                break
+        elif letra in palabra_oculta:
+            print(f"La letra {letra} está entre la palabra oculta!")
+            for i, letra_nueva in enumerate(palabra_oculta):
+                if letra_nueva == letra:
+                    progreso[i] = letra
         else:
-            letras_incorrectas.append(letra)
-            vidas -= 1
-            print(f"Letra incorrecta. Te quedan {vidas} vidas.")
+            intentos -=1
+            print(f"la letra {letra} no está en la palabra. Te quedan {intentos} oportunidades")
+        
+        print("progreso: "+" ".join(progreso))
 
-        if vidas == 0:
-            print(f"Perdiste. La palabra era: {palabra}")
-
-if __name__ == "__main__":
-    while True:
-        jugar_adivina_la_palabra()
-        jugar_de_nuevo = input("¿Quieres jugar de nuevo? (s/n): ").lower()
-        if jugar_de_nuevo != 's':
-            print("Gracias por jugar. ¡Hasta la próxima!")
-            break
+    if "_" not in progreso:
+     print("\n¡Muy bien! Adivinaste la palabra 🥳")
+    else:
+        print("\nTus oportunidades terminaron 🙁 La palabra era {palabra_oculta}")
